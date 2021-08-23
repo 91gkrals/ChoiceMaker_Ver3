@@ -42,7 +42,7 @@ class ChoiceStore {
 
 
     @action //observable 데이터를 변경할 때 action
-    setTodoProps(name, value) {
+    setRateProps(name, value) {
         this._todo = {
             ...this._todo,
             [name]: value
@@ -56,18 +56,18 @@ class ChoiceStore {
     }
 
     @action
-    addTodo(todo) {
+    addRate(todo) {
         this._todos.push(todo);
     }
 
 
     @action
-    selectedTodo(todo) {
+    selectedRate(todo) {
         this._todo = todo;
     }
 
     @action
-    updateTodo() {
+    updateRate() {
         let foundTodo = this._todos.find((todo) => todo.id === this._todo.id);
         foundTodo.title = this._todo.title;
         foundTodo.date = this._todo.date;
@@ -78,7 +78,7 @@ class ChoiceStore {
     }
 
     @action
-    removeTodo() {
+    removeRate() {
         let index = this._todos.findIndex(todo => todo.id === this._todo.id);
         if (index > -1) {
             this._todos.splice(index, 1);//index부터 1개를 제거하겠다.

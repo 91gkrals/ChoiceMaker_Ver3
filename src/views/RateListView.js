@@ -27,7 +27,7 @@ const styles = theme => ({
 
 
 @observer
-class TodoListView extends PureComponent {
+class RateListView extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -38,7 +38,7 @@ class TodoListView extends PureComponent {
   render() {
 
     //const sample = [{id: 1, title:'title1', date:'date1'}, {id: 2, title:'title2', date:'date2'}]
-    const { todos, todo, onSelectedTodo } = this.props;
+    const { todos, todo, onSelectedRate } = this.props;
     let selectedID = this.state.selectedID;
 
     console.log('아래는 todoObj');
@@ -48,7 +48,7 @@ class TodoListView extends PureComponent {
 
     const rowSelectedHander = (todo) => {
       this.setState({ selectedID: todo.id })
-      onSelectedTodo(todo);
+      onSelectedRate(todo);
       //console.log(this.state.selectedID);
       console.log('클릭 후 todoObj 모습');
       console.log(todo);
@@ -92,7 +92,7 @@ class TodoListView extends PureComponent {
   }
 }
 
-export default withStyles(styles)(TodoListView);
+export default withStyles(styles)(RateListView);
 
 
 

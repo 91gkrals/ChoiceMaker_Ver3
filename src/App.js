@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TodoEditFormContainer from './containers/TodoEditFormContainer';
-import TodoListContainer from './containers/TodoListContainer';
+import ChoiceEditFormContainer from './containers/ChoiceEditFormContainer';
+import TodoListContainer from './containers/RateListContainer';
 
 import { Box, Container } from '@material-ui/core';
 import SearchbarContainer from './containers/SearchbarContainer';
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <Container >
         <ErrorBoundary>
-          <Box m={3}><TodoEditFormContainer /></Box>
+          <Box m={3}><ChoiceEditFormContainer /></Box>
           <Box m={3}>
             <SearchbarContainer />
             <TodoListContainer />

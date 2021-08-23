@@ -22,6 +22,8 @@ import logo from '../img/Logo1.png';
 import '../GlobalStyle.css';
 import { red } from '@material-ui/core/colors';
 
+
+
 let Wrapper = styled.div`
   width:100%;
   background-color:lightgray;
@@ -53,7 +55,7 @@ const styles = theme => ({
   thumb: {
     "& .MuiSlider-markLabel": {
       color: 'skyblue',
-      fontSize: 5
+      fontSize: 12
     }
   }
 });
@@ -61,7 +63,7 @@ const styles = theme => ({
 
 
 @observer
-class TodoEditFormView extends PureComponent {
+class ChoiceEditFormView extends PureComponent {
 
 
   getValueText(val, idx) {
@@ -81,7 +83,7 @@ class TodoEditFormView extends PureComponent {
 
   render() {
 
-    const { todo, onSetTodoProps, onAddTodo, onUpdateTodo, onRemoveTodo, resultNum, onSubmitDecision } = this.props;
+    const { todo, onSetRateProps, onAddRate, onUpdateRate, onRemoveRate, resultNum, onSubmitDecision } = this.props;
 
     const guideTalk1 = `사람은 일상의 매순간 다양한 선택지 중 하나를 선택을 하며 살아갑니다.
                         하지만 뒤돌아서면 과연 옳은 결정이었는지 고민될 때가 많죠.
@@ -113,7 +115,7 @@ class TodoEditFormView extends PureComponent {
     const { classes } = this.props;
 
     const handleSliderChange = (event, newValue) => {
-      onSetTodoProps('test', newValue);
+      onSetRateProps('test', newValue);
     }
 
 
@@ -155,10 +157,10 @@ class TodoEditFormView extends PureComponent {
                 fullWidth
                 margin="normal"
                 id="outlined-basic"
-                label="안건"
+                label="결정제목"
                 variant="standard"
                 value={todo && todo.title ? todo.title : ''}
-                onChange={(event) => onSetTodoProps('title', event.target.value)}
+                onChange={(event) => onSetRateProps('title', event.target.value)}
               />
             </Grid>
             <Grid item xs={6}>
@@ -173,7 +175,7 @@ class TodoEditFormView extends PureComponent {
                   placeholder="(예) 2021-08-30"
                   format="yyyy-MM-dd"
                   value={todo && todo.date ? todo.date : null}
-                  onChange={(date) => onSetTodoProps('date', date.valueOf())}
+                  onChange={(date) => onSetRateProps('date', date.valueOf())}
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
                   }}
@@ -194,7 +196,7 @@ class TodoEditFormView extends PureComponent {
                   id="gachi"
                   label="평가항목"
                   value={todo && todo.gachi ? todo.gachi : ''}
-                  onChange={(event) => onSetTodoProps('gachi', event.target.value)}
+                  onChange={(event) => onSetRateProps('gachi', event.target.value)}
                 />
               </Grid>
               <Grid
@@ -223,7 +225,7 @@ class TodoEditFormView extends PureComponent {
                 value={todo && todo.scoreScale ? todo.scoreScale : 5}
                 defaultValue={5}
                 //getAriaValueText={this.getValueText}
-                onChange={(event, newValue) => onSetTodoProps('scoreScale', newValue || 5)}
+                onChange={(event, newValue) => onSetRateProps('scoreScale', newValue || 5)}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
                 step={1}
@@ -241,7 +243,7 @@ class TodoEditFormView extends PureComponent {
               <Slider
                 value={todo && todo.extraScore ? todo.extraScore : 0}
                 defaultValue={0}
-                onChange={(event, newValue) => onSetTodoProps('extraScore', newValue || 0)}
+                onChange={(event, newValue) => onSetRateProps('extraScore', newValue || 0)}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
                 step={2}
@@ -254,11 +256,11 @@ class TodoEditFormView extends PureComponent {
             <Grid container>
               <Grid>
                 <Button variant='contained' color='primary' startIcon={<SaveIcon />} size='small'
-                  onClick={onAddTodo}>Add</Button>&nbsp;&nbsp;
+                  onClick={onAddRate}>Add</Button>&nbsp;&nbsp;
                 <Button variant='contained' color='default' startIcon={<UpdateIcon />} size='small'
-                  onClick={onUpdateTodo}>Update</Button>&nbsp;&nbsp;
+                  onClick={onUpdateRate}>Update</Button>&nbsp;&nbsp;
                 <Button variant='contained' color='secondary' startIcon={<DeleteIcon />} size='small'
-                  onClick={onRemoveTodo}>Delete</Button>&nbsp;&nbsp;
+                  onClick={onRemoveRate}>Delete</Button>&nbsp;&nbsp;
               </Grid>
               <Grid
                 item xs={1}
@@ -312,7 +314,7 @@ class TodoEditFormView extends PureComponent {
   }
 }
 
-export default withStyles(styles)(TodoEditFormView);
+export default withStyles(styles)(ChoiceEditFormView);
 
 
 {/* LEGACY

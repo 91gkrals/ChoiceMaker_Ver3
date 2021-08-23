@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoEditFormView from '../views/TodoEditFormView';
+import ChoiceEditFormView from '../views/ChoiceEditFormView';
 
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
@@ -8,25 +8,25 @@ import generateId from '../IDGenerator'
 @inject('choiceStore')
 @autobind //이걸 붙여준 클래스 내에서의 바인드는 신경을 안 써도 됨. 순서는 inject담에 와야됨. 
 @observer
-class TodoEditFormContainer extends Component {
+class ChoiceEditFormContainer extends Component {
 
 
-  onSetTodoProps(name, value) {
-    this.props.choiceStore.setTodoProps(name, value);
+  onSetRateProps(name, value) {
+    this.props.choiceStore.setRateProps(name, value);
   }
 
-  onAddTodo() {
+  onAddRate() {
     let { todo } = this.props.choiceStore;
     todo = { ...todo, id: generateId(5) }
-    this.props.choiceStore.addTodo(todo);
+    this.props.choiceStore.addRate(todo);
   }
 
-  onUpdateTodo() {
-    this.props.choiceStore.updateTodo();
+  onUpdateRate() {
+    this.props.choiceStore.updateRate();
   }
 
-  onRemoveTodo() {
-    this.props.choiceStore.removeTodo();
+  onRemoveRate() {
+    this.props.choiceStore.removeRate();
   }
 
   onSubmitDecision() {
@@ -41,12 +41,12 @@ class TodoEditFormContainer extends Component {
 
 
     return (
-      <TodoEditFormView
+      <ChoiceEditFormView
         todo={choiceStore.todo}
-        onSetTodoProps={this.onSetTodoProps}
-        onAddTodo={this.onAddTodo}
-        onUpdateTodo={this.onUpdateTodo}
-        onRemoveTodo={this.onRemoveTodo}
+        onSetRateProps={this.onSetRateProps}
+        onAddRate={this.onAddRate}
+        onUpdateRate={this.onUpdateRate}
+        onRemoveRate={this.onRemoveRate}
         onSubmitDecision={this.onSubmitDecision}
         resultNum={choiceStore.resultNum}
       />
@@ -54,4 +54,4 @@ class TodoEditFormContainer extends Component {
   }
 }
 
-export default TodoEditFormContainer;
+export default ChoiceEditFormContainer;
